@@ -16,13 +16,7 @@ const PORT = 8080;
 
 APP.use(cors())
 
-APP.get("/", (req:Request, res:Response) => {
-    res.send("HELLO, WORLD")
-})
 
-APP.get("/about",(req:Request, res:Response)=>{
-    res.send("Hello This Route About")
-})
 
 mongoose.set('useFindAndModify', true)
 mongoose.connect(URL, OPTIONS).then(()=>{
