@@ -1,5 +1,5 @@
 import {Router} from 'express'
-
+import {getTodos, getTodo, addTodo, updateTodo, removeTodo} from "../controllers/todos"
 const ROUTER = Router()
 
 ROUTER.get('/api/todos', getTodos)

@@ -10,13 +10,10 @@ const OPTIONS = {
     useUnifiedTopology : true
 }
 
-
 const APP = express();
 const PORT = 8080;
 
 APP.use(cors())
-
-
 
 mongoose.set('useFindAndModify', true)
 mongoose.connect(URL, OPTIONS).then(()=>{
