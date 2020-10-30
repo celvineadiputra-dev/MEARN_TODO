@@ -61,3 +61,29 @@ export const updateTodo = async(req: Request, res: Response): Promise<void> =>{
         todos:updatedAllTodosAfterUpdate
     })
 }
+export const removeTodo = async(req: Request, res: Response): Promise<void> =>{
+    const {params: {id}} = req
+    if(!id){
+        res.status(401).json({
+            status: 401,
+            errorMessage : 'Validation Error: params _id is not defined'
+        });
+        return
+    }
+    const removeTodo = await TodoModel.findByIdAndRemove(id)
+    const updatedAllTodosAfterRemove = await TodoModel.find()
+
+    if(!removeTodo){
+        res.status(501).json({
+            status: 501,
+            errorMessage: 'Remove todo failed, Not Implement'
+        })
+        return
+    }
+
+    res.status(200).json({
+        message : 'Todo Successfully removed',
+        removeTodo,
+        todos: updatedAllTodosAfterRemove
+    })
+}
